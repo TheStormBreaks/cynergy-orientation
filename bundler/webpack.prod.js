@@ -1,10 +1,11 @@
 const path = require("path");
 
 module.exports = {
-  // ... your entry, loaders etc.
+  entry: path.resolve(__dirname, "../src/script.ts"),  // 👈 add this
   output: {
     filename: "bundle.[contenthash].js",
-    path: path.resolve(__dirname, "../dist"),  // 👈 important
-    clean: true,  // optional: cleans old files
+    path: path.resolve(__dirname, "../dist"),
+    clean: true,
   },
+  // loaders, plugins etc.
 };
