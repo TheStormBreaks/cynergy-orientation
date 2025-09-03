@@ -221,17 +221,22 @@ const LoadingScreen: React.FC<LoadingProps> = () => {
                 })}
             >
                 <div style={styles.startPopup}>
-                    {}
-                    <p>CYNERGY ORIENTATION 2025</p>
+                    {/* <p style={styles.red}>
+                        <b>THIS SITE IS CURRENTLY A W.I.P.</b>
+                    </p>
+                    <p>But do enjoy what I have done so far :)</p>
+                    <div style={styles.spacer} />
+                    <div style={styles.spacer} /> */}
+                    <p>Henry Heffernan Portfolio Showcase 2022</p>
                     {mobileWarning && (
                         <>
                             <br />
                             <b>
                                 <p style={styles.warning}>
-                                    WELCOME TO RAMAIAH UNIVERSITY
+                                    WARNING: This experience is best viewed on
                                 </p>
                                 <p style={styles.warning}>
-                                    
+                                    a desktop or laptop computer.
                                 </p>
                             </b>
                             <br />

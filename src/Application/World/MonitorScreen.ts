@@ -184,7 +184,7 @@ export default class MonitorScreen extends EventEmitter {
 
         // Set iframe attributes
         // PROD
-        iframe.src = 'http://localhost:8000/CYNERGY.pdf';
+        iframe.src = 'http://localhost:8080/CYNERGY.pdf';
         /**
          * Use dev server is query params are present
          *
@@ -194,7 +194,7 @@ export default class MonitorScreen extends EventEmitter {
          */
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('dev')) {
-            iframe.src = 'http://localhost:8000/CYNERGY.pdf';
+            iframe.src = 'http://localhost:8080/CYNERGY.pdf';
         }
         iframe.style.width = this.screenSize.width + 'px';
         iframe.style.height = this.screenSize.height + 'px';

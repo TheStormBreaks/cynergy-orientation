@@ -18,36 +18,38 @@ module.exports = merge(
         {
             level: 'warn',
         },
-        devServer:
-        {
-            host: 'local-ip',
-            port: portFinderSync.getPort(8080),
-            open: true,
-            https: false,
-            allowedHosts: 'all',
-            hot: false,
-            watchFiles: ['src/**', 'static/**'],
-            static:
-            {
-                watch: true,
-                directory: path.join(__dirname, '../static')
-            },
-            client:
-            {
-                logging: 'none',
-                overlay: true,
-                progress: false
-            },
-            onAfterSetupMiddleware: function(devServer)
-            {
-                const port = devServer.options.port
-                const https = devServer.options.https ? 's' : ''
-                const localIp = ip.address()
-                const domain1 = `http${https}://${localIp}:${port}`
-                const domain2 = `http${https}://localhost:${port}`
-                
-                console.log(`Project running at:\n  - ${infoColor(domain1)}\n  - ${infoColor(domain2)}`)
-            }
+        devServer: {
+    host: 'local-ip',
+    port: portFinderSync.getPort(5000),
+    open: true,
+    https: false,
+    allowedHosts: 'all',
+    hot: false,
+    watchFiles: ['src/**', 'static/**'],
+    static: {
+        watch: true,
+        directory: path.join(__dirname, '../static')
+    },
+    client: {
+        logging: 'none',
+        overlay: true,
+        progress: false
+    },
+    setupMiddlewares: (middlewares, devServer) => {
+        if (!devServer) {
+            throw new Error('webpack-dev-server is not defined')
         }
+
+        const port = devServer.options.port
+        const https = devServer.options.https ? 's' : ''
+        const localIp = ip.address()
+        const domain1 = `http${https}://${localIp}:${port}`
+        const domain2 = `http${https}://localhost:${port}`
+
+        console.log(`Project running at:\n  - ${infoColor(domain1)}\n  - ${infoColor(domain2)}`)
+
+        return middlewares
+    }
+}
     }
 )
