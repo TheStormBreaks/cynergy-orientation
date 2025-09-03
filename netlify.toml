@@ -1,4 +1,3 @@
 [build]
-  command = "npm start dev"
-
-
+  command = "npm run build"
+  publish = "dist"   # or "build" depending on your Webpack output folder

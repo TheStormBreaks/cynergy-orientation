@@ -1,14 +1,10 @@
-const { merge } = require('webpack-merge')
-const commonConfiguration = require('./webpack.common.js')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require("path");
 
-module.exports = merge(
-    commonConfiguration,
-    {
-        mode: 'production',
-        plugins:
-        [
-            new CleanWebpackPlugin()
-        ]
-    }
-)
+module.exports = {
+  // ... your entry, loaders etc.
+  output: {
+    filename: "bundle.[contenthash].js",
+    path: path.resolve(__dirname, "../dist"),  // 👈 important
+    clean: true,  // optional: cleans old files
+  },
+};
