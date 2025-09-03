@@ -1,11 +1,23 @@
 const path = require("path");
 
 module.exports = {
-  entry: path.resolve(__dirname, "../src/script.ts"),  // 👈 add this
+  mode: "production", // 👈 important, removes the warning
+  entry: path.resolve(__dirname, "../src/script.ts"),
   output: {
     filename: "bundle.[contenthash].js",
     path: path.resolve(__dirname, "../dist"),
     clean: true,
   },
-  // loaders, plugins etc.
+  resolve: {
+    extensions: [".ts", ".js"], // 👈 allows importing TS without extensions
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+    ],
+  },
 };
